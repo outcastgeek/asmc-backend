@@ -11,7 +11,7 @@ type Query {
 
   getMyProfile: MyProfile!
 
-  getProfile(screeName: String!): OtherProfile!
+  getProfile(screenName: String!): OtherProfile!
 
   getTweets(userId: ID!, limit: Int!, nextToken: String): TweetsPage!
 
@@ -55,14 +55,14 @@ input ProfileInput {
 interface IProfile {
   id: ID!
   name: String!
-  screeName: String!
+  screenName: String!
   imageUrl: AWSURL
   backgroundImageUrl: AWSURL
   bio: String
   location: String
   website: AWSURL
   birthdate: AWSDate
-  createAt: AWSDateTime!
+  createdAt: AWSDateTime!
   tweets: TweetsPage!
   followersCount: Int!
   followingCount: Int!
@@ -73,14 +73,14 @@ interface IProfile {
 type MyProfile implements IProfile {
   id: ID!
   name: String!
-  screeName: String!
+  screenName: String!
   imageUrl: AWSURL
   backgroundImageUrl: AWSURL
   bio: String
   location: String
   website: AWSURL
   birthdate: AWSDate
-  createAt: AWSDateTime!
+  createdAt: AWSDateTime!
   tweets: TweetsPage!
   followersCount: Int!
   followingCount: Int!
@@ -91,14 +91,14 @@ type MyProfile implements IProfile {
 type OtherProfile implements IProfile {
   id: ID!
   name: String!
-  screeName: String!
+  screenName: String!
   imageUrl: AWSURL
   backgroundImageUrl: AWSURL
   bio: String
   location: String
   website: AWSURL
   birthdate: AWSDate
-  createAt: AWSDateTime!
+  createdAt: AWSDateTime!
   tweets: TweetsPage!
   followersCount: Int!
   followingCount: Int!
@@ -111,13 +111,13 @@ type OtherProfile implements IProfile {
 interface ITweet {
   id: ID!
   profile: IProfile!
-  createAt: AWSDateTime!
+  createdAt: AWSDateTime!
 }
 
 type Tweet implements ITweet {
   id: ID!
   profile: IProfile!
-  createAt: AWSDateTime!
+  createdAt: AWSDateTime!
   text: String!
   replies: Int!
   likes: Int!
@@ -128,7 +128,7 @@ type Tweet implements ITweet {
 type Reply implements ITweet {
   id: ID!
   profile: IProfile!
-  createAt: AWSDateTime!
+  createdAt: AWSDateTime!
   inReplyToTweet: ITweet!
   inReplyToUser: [IProfile!]
   text: String!
@@ -141,7 +141,7 @@ type Reply implements ITweet {
 type Retweet implements ITweet {
   id: ID!
   profile: IProfile!
-  createAt: AWSDateTime!
+  createdAt: AWSDateTime!
   retweetOf: ITweet!
   text: String!
   replies: Int!

@@ -1,11 +1,13 @@
 
+require('dotenv').config()
+
 const DynamoDB = require('aws-sdk/clients/dynamodb') // Install the sdk in dev deps only as it is already available and only require the clients all for better cold start performance
 const DocumentClient = new DynamoDB.DocumentClient()
 
 const Chance = require('chance')
 const chance = new Chance()
 
-const { USERS_TABLE } process.env
+const { USERS_TABLE } = process.env
 
 module.exports.handler = async (event) => {
     if (event.triggerSource === 'PostConfirmation_ConfirmSignUp') {
@@ -15,8 +17,8 @@ module.exports.handler = async (event) => {
         const user = {
             id: event.userName,
             name,
-            screeName,
-            createAt: new Date().toJSON(),
+            screenName,
+            createdAt: new Date().toJSON(),
             followersCount: 0,
             followingCount: 0,
             tweetsCount: 0,
