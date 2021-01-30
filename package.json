@@ -5,8 +5,10 @@
   "description": "Backend for the AppSync Masterclass demo app",
   "main": "index.js",
   "scripts": {
+    "upgrade-node-deps": "npx npm-check-updates -u",
     "sls": "sls",
     "exportEnv": "sls export-env",
+    "test": "jest --verbose ./__tests__/test_cases/unit",
     "integration-test": "jest --verbose ./__tests__/test_cases/integration",
     "e2e-test": "jest --verbose ./__tests__/test_cases/e2e"
   },
@@ -22,13 +24,15 @@
   },
   "homepage": "https://github.com/outcastgeek/appsyncmasterclass-backend#readme",
   "devDependencies": {
-    "@types/jest": "^26.0.19",
-    "aws-sdk": "^2.814.0",
+    "@types/jest": "^26.0.20",
+    "amplify-appsync-simulator": "^1.25.0",
+    "amplify-velocity-template": "^1.4.2",
+    "aws-sdk": "^2.834.0",
     "jest": "^26.6.3",
     "serverless": "2.4.0",
-    "serverless-appsync-plugin": "^1.5.0",
+    "serverless-appsync-plugin": "^1.6.0",
     "serverless-export-env": "^1.4.0",
-    "serverless-iam-roles-per-function": "^3.0.1"
+    "serverless-iam-roles-per-function": "^3.1.0"
   },
   "dependencies": {
     "chance": "^1.1.7",
